@@ -1,0 +1,29 @@
+{
+  "name": "restaurant-backend",
+  "version": "1.0.0",
+  "license": "MIT",
+  "author": "vistomia",
+  "type": "module",
+  "main": "src/app.ts",
+  "scripts": {
+    "dev": "yarn tsc --watch & node --watch dist/app.js",
+    "build": "tsc --build",
+    "test": "NODE_OPTIONS=--experimental-vm-modules jest",
+    "format": "oxfmt",
+    "format:check": "oxfmt --check"
+  },
+  "dependencies": {
+    "express": "^5.2.1"
+  },
+  "devDependencies": {
+    "@swc/core": "^1.16.1",
+    "@swc/jest": "^0.2.39",
+    "@types/express": "^5.0.6",
+    "@types/jest": "^30.0.0",
+    "@types/supertest": "^7.2.1",
+    "jest": "^30.4.2",
+    "oxfmt": "^0.65.0",
+    "supertest": "^7.2.2",
+    "typescript": "^7.0.2"
+  }
+}
