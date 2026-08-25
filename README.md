@@ -16,3 +16,5 @@ https://dev.to/carlosorioli/iniciando-um-projeto-nodejs-express-com-typescript-4
 
 pipx run ignr -p node > .gitignore
 https://typeorm.io/docs/drivers/sqlite/
+
+https://developer.mozilla.org/en-US/docs/Learn_web_development/Extensions/Server-side/Express_Nodejs/routes

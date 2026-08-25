@@ -1,9 +1,8 @@
 import { Router } from "express";
+import { getUsers } from "../controllers/users.controller.js";
 
 const userRouter = Router();
 
-userRouter.get("/", (req, res) => {
-  res.json({ message: "ola usuario" });
-});
+userRouter.get("/", getUsers);
 
 export default userRouter;
