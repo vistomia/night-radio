@@ -8,7 +8,7 @@
   "scripts": {
     "dev": "yarn tsc --project tsconfig.build.json --watch & node --watch dist/server.js",
     "build": "tsc --project tsconfig.build.json",
-    "test": "jest --detectOpenHandles",
+    "test": "yarn build && jest --detectOpenHandles",
     "format": "oxfmt",
     "format:check": "oxfmt --check"
   },
