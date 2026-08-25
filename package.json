@@ -4,11 +4,11 @@
   "license": "MIT",
   "author": "vistomia",
   "type": "module",
-  "main": "src/app.ts",
+  "main": "src/server.ts",
   "scripts": {
-    "dev": "yarn tsc --watch & node --watch dist/app.js",
-    "build": "tsc --build",
-    "test": "NODE_OPTIONS=--experimental-vm-modules jest",
+    "dev": "yarn tsc --project tsconfig.build.json --watch & node --watch dist/server.js",
+    "build": "tsc --project tsconfig.build.json",
+    "test": "jest --detectOpenHandles",
     "format": "oxfmt",
     "format:check": "oxfmt --check"
   },

@@ -1,4 +1,5 @@
 import express from "express";
+import userRouter from "./routes/users.router.js";
 
 const app = express();
 
@@ -11,9 +12,6 @@ route.get("/", (req, res) => {
 });
 
 app.use(route);
-
-app.listen(3000, () => {
-  console.log("ligou");
-});
+app.use(userRouter);
 
 export default app;

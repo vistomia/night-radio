@@ -1,8 +1,22 @@
+// jest.config.ts (or jest.config.js)
 export default {
   testEnvironment: "node",
   transform: {
-    "^.+\\.(t|j)sx?$": "@swc/jest",
+    "^.+\\.(t|j)sx?$": [
+      "@swc/jest",
+      {
+        jsc: {
+          target: "es2022",
+          parser: {
+            syntax: "typescript",
+            dynamicImport: true,
+          },
+        },
+      },
+    ],
   },
-  moduleFileExtensions: ["ts", "js", "json", "node"],
-  testMatch: ["**/*.test.ts", "**/*.spec.ts"],
+  moduleNameMapper: {
+    "^(\\.{1,2}/.*)\\.js$": "$1",
+  },
+  extensionsToTreatAsEsm: [".ts", ".tsx"],
 };
