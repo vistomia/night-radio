@@ -13,7 +13,9 @@
         "format:check": "oxfmt --check"
     },
     "dependencies": {
-        "express": "^5.2.1"
+        "better-sqlite3": "^13.0.3",
+        "express": "^5.2.1",
+        "typeorm": "^1.1.0"
     },
     "devDependencies": {
         "@swc/core": "^1.16.1",

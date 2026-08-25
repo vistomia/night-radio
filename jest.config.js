@@ -1,6 +1,6 @@
-// jest.config.ts (or jest.config.js)
 export default {
     testEnvironment: "node",
+    setupFiles: ["reflect-metadata"],
     transform: {
         "^.+\\.(t|j)sx?$": [
             "@swc/jest",
@@ -10,7 +10,13 @@ export default {
                     parser: {
                         syntax: "typescript",
                         dynamicImport: true,
+                        decorators: true, // <-- Added
                     },
+                    transform: {
+                        legacyDecorator: true, // <-- Added
+                        decoratorMetadata: true, // <-- Added
+                    },
+                    keepClassNames: true, // <-- Added (important for TypeORM entities)
                 },
             },
         ],

@@ -2,7 +2,18 @@
     "compilerOptions": {
         // File Layout
         "rootDir": "./src",
-        "outDir": "./dist"
+        "outDir": "./dist",
+        "emitDecoratorMetadata": true,
+        "experimentalDecorators": true,
+        "strictPropertyInitialization": false
     },
-    "exclude": ["node_modules", "dist", "test", "tests", "**/*.test.ts", "**/*.spec.ts", "oxfmt.config.ts"]
+    "exclude": [
+        "node_modules",
+        "dist",
+        "test",
+        "tests",
+        "**/*.test.ts",
+        "**/*.spec.ts",
+        "oxfmt.config.ts"
+    ]
 }
