@@ -2,16 +2,17 @@
 
 Sistema de Gestão para Restaurantes.
 
-Um grande monolíto para realizar a gestão de um restaurante. 
+Um grande monolíto para realizar a gestão de um restaurante.
 
 ## Membros da equipe
 
 **567680** - Victor Farias da Silva / Sistemas de informação
 
 ## Objetivo Geral
+
 Centralizar os serviços de um restaurante.
 
-- sistema de cardápio 
+- sistema de cardápio
 - sistema de agendamento
 - sistema de serviço de entrega
 - sistema de clientes

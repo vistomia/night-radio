@@ -1,5 +1,5 @@
 import { AppDataSource } from "../database/data-source.js"
-import { User } from "../database/entities/User.js"
+import { User } from "../database/entities/user.js"
 
 export async function getUsers(req: any, res: any) {
     try {
