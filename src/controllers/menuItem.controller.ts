@@ -12,6 +12,20 @@ export async function getMenuItems(req: any, res: any) {
     res.json({ menuItems: menuItems })
 }
 
+export async function getMenuItemById(req: any, res: any) {
+    const menuItemRepo = AppDataSource.getRepository(MenuItem)
+
+    try {
+        const menuItem = await menuItemRepo.findOneBy({ id: req.params.id })
+        if (menuItem === null) return res.status(404).json({ message: "MenuItem not found" })
+
+        return res.json(menuItem)
+    } catch (e) {
+        console.log(e)
+        return res.status(500).json("Internal Server Error")
+    }
+}
+
 export async function postMenuItem(req: any, res: any) {
     const menuItemRepo = AppDataSource.getRepository(MenuItem)
 

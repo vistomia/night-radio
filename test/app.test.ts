@@ -54,6 +54,19 @@ describe("POST /menuItems", function () {
         })
     })
 
+    it("test getById", async function () {
+        const response = await request(app).get("/menuItems/1")
+
+        expect(response.status).toEqual(200)
+        expect(response.headers["content-type"]).toMatch(/json/)
+        expect(response.body).toEqual({
+            id: 1,
+            name: "test",
+            description: "test",
+            price: 2,
+        })
+    })
+
     it("test 1", async function () {
         const response = await request(app).get("/menuItems")
 
@@ -78,7 +91,7 @@ describe("POST /menuItems", function () {
         expect(response.status).toEqual(200)
         expect(response.header["content-type"]).toMatch(/json/)
         expect(response.body).toEqual({
-            menuItems: []
+            menuItems: [],
         })
     })
 })
