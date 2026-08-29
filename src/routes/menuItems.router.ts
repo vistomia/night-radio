@@ -1,9 +1,14 @@
 import { Router } from "express"
-import { getMenuItems, postMenuItem } from "../controllers/menuItem.controller.js"
+import {
+    deleteMenuItemById,
+    getMenuItems,
+    postMenuItem,
+} from "../controllers/menuItem.controller.js"
 
 const menuItemRouter = Router()
 
 menuItemRouter.get("/", getMenuItems)
 menuItemRouter.post("/", postMenuItem)
+menuItemRouter.delete("/:id", deleteMenuItemById)
 
 export default menuItemRouter

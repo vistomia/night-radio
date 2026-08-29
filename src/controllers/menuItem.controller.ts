@@ -6,7 +6,7 @@ export async function getMenuItems(req: any, res: any) {
 
     const menuItems = await menuItemRepo.find({
         take: req.query.limit,
-		skip: req.query.skip
+        skip: req.query.skip,
     })
 
     res.json({ menuItems: menuItems })
@@ -25,7 +25,7 @@ export async function postMenuItem(req: any, res: any) {
     res.status(201).json(menuItemDB)
 }
 
-export async function removeMenuItemById(req: any, res: any) {
+export async function deleteMenuItemById(req: any, res: any) {
     try {
         const menuItemRepo = AppDataSource.getRepository(MenuItem)
         const result = await menuItemRepo.delete({ id: req.params.id })
@@ -35,7 +35,7 @@ export async function removeMenuItemById(req: any, res: any) {
 
         res.json({ message: "MenuItem deleted" })
     } catch (e) {
-		console.error(e)
+        console.error(e)
         res.status(500).json({ message: "Internal Server Error" })
     }
 }

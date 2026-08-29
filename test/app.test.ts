@@ -70,4 +70,15 @@ describe("POST /menuItems", function () {
             ],
         })
     })
+
+    it("test 2", async function () {
+        await request(app).delete("/menuItems/1")
+        const response = await request(app).get("/menuItems")
+
+        expect(response.status).toEqual(200)
+        expect(response.header["content-type"]).toMatch(/json/)
+        expect(response.body).toEqual({
+            menuItems: []
+        })
+    })
 })
