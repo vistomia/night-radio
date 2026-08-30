@@ -3,7 +3,6 @@ import app from "../src/app.js"
 import { AppDataSource } from "../src/database/data-source.js"
 import { MenuItem } from "../src/database/entities/menuItems.js"
 
-
 async function getMenuItem() {
     const repo = AppDataSource.getRepository(MenuItem)
     const menuItem = new MenuItem()
@@ -19,15 +18,15 @@ beforeAll(() => {
 })
 
 afterEach(async () => {
-    const entities = AppDataSource.entityMetadatas;
+    const entities = AppDataSource.entityMetadatas
 
     for (const entity of entities) {
-        const repository = AppDataSource.getRepository(entity.name);
-        await repository.clear();
+        const repository = AppDataSource.getRepository(entity.name)
+        await repository.clear()
     }
 
-    await AppDataSource.query(`DELETE FROM sqlite_sequence;`); // para limpar os IDs do banco sqlite
-});
+    await AppDataSource.query(`DELETE FROM sqlite_sequence;`) // para limpar os IDs do banco sqlite
+})
 
 describe("GET /", function () {
     it("opa mundo", async function () {

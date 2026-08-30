@@ -45,17 +45,17 @@ export async function putMenuItemById(req: any, res: any) {
         const menuItemRepo = AppDataSource.getRepository(MenuItem)
         const menuItem = await menuItemRepo.findOneBy({ id: req.params.id })
 
-        if (menuItem === null) return res.status(404).send({ message: "MenuItem not found"})
-        
+        if (menuItem === null) return res.status(404).send({ message: "MenuItem not found" })
+
         menuItemRepo.merge(menuItem, {
             name: req.body.name,
             description: req.body.description,
-            price: req.body.price
+            price: req.body.price,
         })
 
         const updatedMenuItem = await menuItemRepo.save(menuItem)
-        
-        return res.json( updatedMenuItem )
+
+        return res.json(updatedMenuItem)
     } catch (e) {
         console.error(e)
         return res.status(500).json({ message: "Internal Server Error" })
