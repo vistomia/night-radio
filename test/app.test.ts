@@ -122,3 +122,31 @@ describe("POST /menuItems", function () {
         })
     })
 })
+
+describe("PATCH /menuItems/:id", function () {
+    it("test 0", async function () {
+        await getMenuItem()
+        const response = await request(app).patch("/menuItems/1").send({ price: 5 })
+        const responseGet = await request(app).get("/menuItems/1")
+
+        expect(response.status).toEqual(200)
+        expect(response.header["content-type"]).toMatch(/json/)
+        expect(response.body).toEqual({
+            id: 1,
+            name: "test",
+            description: "test",
+            price: 5,
+        })
+
+        expect(responseGet.status).toEqual(200)
+        expect(responseGet.header["content-type"]).toMatch(/json/)
+        expect(responseGet.body).toEqual(
+            {
+                id: 1,
+                name: "test",
+                description: "test",
+                price: 5,
+            }
+        )
+    })
+})

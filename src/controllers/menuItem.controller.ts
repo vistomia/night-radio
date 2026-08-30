@@ -62,6 +62,24 @@ export async function putMenuItemById(req: any, res: any) {
     }
 }
 
+export async function patchMenuItemById(req: any, res: any) {
+    try {   
+        const menuItemRepo = AppDataSource.getRepository(MenuItem)
+        const menuItem = await menuItemRepo.findOneBy({ id: req.params.id })
+
+        if (menuItem === null) return res.status(404).send({ message: "MenuItem not found" })
+
+        menuItemRepo.merge(menuItem, req.body)
+
+        const updatedMenuItem = await menuItemRepo.save(menuItem)
+
+        return res.json(updatedMenuItem)
+    } catch (e) {
+        console.error(e)
+        return res.status(500).json({ message: "Internal Server Error" })
+    }
+}
+
 export async function deleteMenuItemById(req: any, res: any) {
     try {
         const menuItemRepo = AppDataSource.getRepository(MenuItem)
