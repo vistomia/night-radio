@@ -1,4 +1,5 @@
-import { Entity, PrimaryGeneratedColumn, Column } from "typeorm"
+import { Entity, PrimaryGeneratedColumn, Column, OneToMany } from "typeorm"
+import { MenuToMenuItem } from "./menuToMenuItem.js"
 
 @Entity()
 export class MenuItem {
@@ -13,4 +14,7 @@ export class MenuItem {
 
     @Column()
     price!: number
+
+    @OneToMany(() => MenuToMenuItem, (menuToMenuItem) => menuToMenuItem.menuItem)
+    menuToMenuItems!: MenuToMenuItem[]
 }
