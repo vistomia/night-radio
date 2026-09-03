@@ -15,6 +15,6 @@ export class MenuItem {
     @Column()
     price!: number
 
-    @OneToMany(() => MenuToMenuItem, (menuToMenuItem) => menuToMenuItem.menuItem)
+    @OneToMany("MenuToMenuItem", (menuToMenuItem: MenuToMenuItem) => menuToMenuItem.menuItem)
     menuToMenuItems!: MenuToMenuItem[]
 }

@@ -12,6 +12,6 @@ export class Menu {
     @Column()
     menu_date!: string
 
-    @OneToMany(() => MenuToMenuItem, (menuToMenuItem) => menuToMenuItem.menu)
+    @OneToMany("MenuToMenuItem", (menuToMenuItem: MenuToMenuItem) => menuToMenuItem.menu)
     menuToMenuItems!: MenuToMenuItem[]
 }
