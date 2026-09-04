@@ -63,7 +63,7 @@ export async function putMenuItemById(req: any, res: any) {
 }
 
 export async function patchMenuItemById(req: any, res: any) {
-    try {   
+    try {
         const menuItemRepo = AppDataSource.getRepository(MenuItem)
         const menuItem = await menuItemRepo.findOneBy({ id: req.params.id })
 

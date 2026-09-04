@@ -140,13 +140,11 @@ describe("PATCH /menuItems/:id", function () {
 
         expect(responseGet.status).toEqual(200)
         expect(responseGet.header["content-type"]).toMatch(/json/)
-        expect(responseGet.body).toEqual(
-            {
-                id: 1,
-                name: "test",
-                description: "test",
-                price: 5,
-            }
-        )
+        expect(responseGet.body).toEqual({
+            id: 1,
+            name: "test",
+            description: "test",
+            price: 5,
+        })
     })
 })

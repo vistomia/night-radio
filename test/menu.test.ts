@@ -2,14 +2,25 @@ import request from "supertest"
 import app from "../src/app.js"
 import { AppDataSource } from "../src/database/data-source.js"
 import { Menu } from "../src/database/entities/menu.js"
+import { MenuItem } from "../src/database/entities/menuItems.js"
 
 async function getMenu() {
     const repo = AppDataSource.getRepository(Menu)
     const menu = new Menu()
     menu.name = "test"
-    menu.menu_date = '2020-05-02'
+    menu.menu_date = "2020-05-02"
 
     return await repo.save(menu)
+}
+
+async function getMenuItem() {
+    const repo = AppDataSource.getRepository(MenuItem)
+    const menuItem = new MenuItem()
+    menuItem.name = "test"
+    menuItem.description = "test"
+    menuItem.price = 2
+
+    return await repo.save(menuItem)
 }
 
 beforeAll(() => {
@@ -19,10 +30,14 @@ beforeAll(() => {
 afterEach(async () => {
     const entities = AppDataSource.entityMetadatas
 
+    AppDataSource.query(`PRAGMA foreign_keys = OFF`) // para conseguir limpar as tabelas com FK
+
     for (const entity of entities) {
         const repository = AppDataSource.getRepository(entity.name)
         await repository.clear()
     }
+
+    AppDataSource.query(`PRAGMA foreign_keys = ON`) // reativando a regra para os próximos testes
 
     await AppDataSource.query(`DELETE FROM sqlite_sequence;`) // para limpar os IDs do banco sqlite
 })
@@ -41,7 +56,7 @@ describe("POST /menus", function () {
     it("test 0", async function () {
         const response = await request(app).post("/menus").send({
             name: "test",
-            menu_date: "2020-05-05"
+            menu_date: "2020-05-05",
         })
 
         expect(response.status).toEqual(201)
@@ -49,7 +64,7 @@ describe("POST /menus", function () {
         expect(response.body).toEqual({
             id: 1,
             name: "test",
-            menu_date: "2020-05-05"
+            menu_date: "2020-05-05",
         })
     })
 
@@ -63,7 +78,7 @@ describe("POST /menus", function () {
         expect(response.body).toEqual({
             id: 1,
             name: "test",
-            menu_date: "2020-05-02"
+            menu_date: "2020-05-02",
         })
     })
 
@@ -79,7 +94,7 @@ describe("POST /menus", function () {
                 {
                     id: 1,
                     name: "test",
-                    menu_date: "2020-05-02"
+                    menu_date: "2020-05-02",
                 },
             ],
         })
@@ -109,17 +124,47 @@ describe("PATCH /menus/:id", function () {
         expect(response.body).toEqual({
             id: 1,
             name: "testa",
-            menu_date: "2020-05-02"
+            menu_date: "2020-05-02",
         })
 
         expect(responseGet.status).toEqual(200)
         expect(responseGet.header["content-type"]).toMatch(/json/)
-        expect(responseGet.body).toEqual(
+        expect(responseGet.body).toEqual({
+            id: 1,
+            name: "testa",
+            menu_date: "2020-05-02",
+        })
+    })
+})
+
+describe("POST /menus/:id/items", function () {
+    it("test 0", async function () {
+        await getMenu()
+        await getMenuItem()
+        const response = await request(app)
+            .post("/menus/1/items")
+            .send({
+                menuItems: [{ id: 1, price: 5 }],
+            })
+
+        expect(response.status).toEqual(201)
+        expect(response.header["content-type"]).toMatch(/json/)
+        expect(response.body).toEqual([
             {
                 id: 1,
-                name: "testa",
-                menu_date: "2020-05-02"
-            }
-        )
+                menu: {
+                    id: 1,
+                    menu_date: "2020-05-02",
+                    name: "test",
+                },
+                menuItem: {
+                    description: "test",
+                    id: 1,
+                    name: "test",
+                    price: 2,
+                },
+                price: 5,
+            },
+        ])
     })
 })

@@ -13,7 +13,7 @@ export const AppDataSource = new DataSource({
     dropSchema: isTest,
     synchronize: true,
     logging: false,
-    entities: [User,MenuToMenuItem, MenuItem, Menu],
+    entities: [User, MenuToMenuItem, MenuItem, Menu],
     migrations: [],
     subscribers: [],
 })
