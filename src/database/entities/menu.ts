@@ -1,5 +1,6 @@
-import { Entity, PrimaryGeneratedColumn, Column, OneToMany } from "typeorm"
+import { Entity, PrimaryGeneratedColumn, Column, OneToMany, ManyToMany, JoinTable } from "typeorm"
 import { MenuToMenuItem } from "./menuToMenuItem.js"
+import { Tag } from "./tag.js"
 
 @Entity()
 export class Menu {
@@ -16,4 +17,8 @@ export class Menu {
         cascade: true,
     })
     menuToMenuItems!: MenuToMenuItem[]
+
+    @ManyToMany(() => Tag)
+    @JoinTable()
+    tags!: Tag[]
 }
