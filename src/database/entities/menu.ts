@@ -17,8 +17,4 @@ export class Menu {
         cascade: true,
     })
     menuToMenuItems!: MenuToMenuItem[]
-
-    @ManyToMany(() => Tag)
-    @JoinTable()
-    tags!: Tag[]
 }
