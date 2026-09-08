@@ -59,14 +59,14 @@ describe("GET /tags", function () {
 describe("POST /tags", function () {
     it("test 0", async function () {
         const response = await request(app).post("/tags").send({
-            name: "test"
+            name: "test",
         })
 
         expect(response.status).toEqual(201)
         expect(response.headers["content-type"]).toMatch(/json/)
         expect(response.body).toEqual({
             id: 1,
-            name: "test"
+            name: "test",
         })
     })
 
@@ -79,7 +79,7 @@ describe("POST /tags", function () {
         expect(response.headers["content-type"]).toMatch(/json/)
         expect(response.body).toEqual({
             id: 1,
-            name: "test"
+            name: "test",
         })
     })
 
@@ -94,7 +94,7 @@ describe("POST /tags", function () {
             tags: [
                 {
                     id: 1,
-                    name: "test"
+                    name: "test",
                 },
             ],
         })
@@ -123,14 +123,14 @@ describe("PATCH /tags/:id", function () {
         expect(response.header["content-type"]).toMatch(/json/)
         expect(response.body).toEqual({
             id: 1,
-            name: "test"
+            name: "test",
         })
 
         expect(responseGet.status).toEqual(200)
         expect(responseGet.header["content-type"]).toMatch(/json/)
         expect(responseGet.body).toEqual({
             id: 1,
-            name: "test"
+            name: "test",
         })
     })
 })

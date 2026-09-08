@@ -1,11 +1,11 @@
 import { Router } from "express"
 import {
-	deleteTagById,
-	getTagById,
-	getTags,
-	patchTagById,
-	postTag,
-	putTagById,
+    deleteTagById,
+    getTagById,
+    getTags,
+    patchTagById,
+    postTag,
+    putTagById,
 } from "../controllers/tag.controller.js"
 
 const tagRouter = Router()

@@ -88,6 +88,7 @@ describe("POST /menuItems", function () {
             name: "test",
             description: "test",
             price: 2,
+            tags: []
         })
     })
 
@@ -105,6 +106,7 @@ describe("POST /menuItems", function () {
                     name: "test",
                     description: "test",
                     price: 2,
+                    tags: [],
                 },
             ],
         })
@@ -136,6 +138,7 @@ describe("PATCH /menuItems/:id", function () {
             name: "test",
             description: "test",
             price: 5,
+            tags: []
         })
 
         expect(responseGet.status).toEqual(200)
@@ -145,6 +148,7 @@ describe("PATCH /menuItems/:id", function () {
             name: "test",
             description: "test",
             price: 5,
+            tags: []
         })
     })
 })
