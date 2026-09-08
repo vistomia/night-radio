@@ -129,3 +129,12 @@ export async function postMenuItemToMenu(req: any, res: any) {
         console.log(e)
     }
 }
+
+export async function getMenuItemFromMenu(req: any, res: any) {
+    const menuRepo = AppDataSource.getMongoRepository(Menu)
+    const menu = menuRepo.findOne(
+        { where: { id: req.params.menuId }, relations: { menuToMenuItems: true }
+    })
+
+    return res.status(200).json({})
+}

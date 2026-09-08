@@ -2,6 +2,7 @@ import { Router } from "express"
 import {
     deleteMenuById,
     getMenuById,
+    getMenuItemFromMenu,
     getMenus,
     patchMenuById,
     postMenu,
@@ -19,5 +20,6 @@ menuRouter.put("/:id", putMenuById)
 menuRouter.patch("/:id", patchMenuById)
 
 menuRouter.post("/:id/items", postMenuItemToMenu)
+menuRouter.get("/:menuId/items/:itemId", getMenuItemFromMenu)
 
 export default menuRouter
