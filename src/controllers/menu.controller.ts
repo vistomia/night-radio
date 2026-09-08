@@ -118,7 +118,7 @@ export async function postMenuItemToMenu(req: any, res: any) {
         const menuToMenuItemSaved = await menuToMenuItemRepo.save(menuItemsP)
 
         const menuToMenuItemPopulated = await menuToMenuItemRepo.find({
-            relations: { menu: true, menuItem: true } as FindOptionsRelations<MenuToMenuItem>,
+            relations: { menu: true, menuItem: {tags: true} } as FindOptionsRelations<MenuToMenuItem>,
             where: {
                 id: In(menuToMenuItemSaved.map((el: any) => el.id)),
             },

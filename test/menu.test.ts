@@ -162,6 +162,7 @@ describe("POST /menus/:id/items", function () {
                     id: 1,
                     name: "test",
                     price: 2,
+                    tags: []
                 },
                 price: 5,
             },
