@@ -28,12 +28,30 @@ afterEach(async () => {
     await AppDataSource.query(`DELETE FROM sqlite_sequence;`) // para limpar os IDs do banco sqlite
 })
 
-describe("GET /", function () {
-    it("opa mundo", async function () {
-        const response = await request(app).get("/")
+describe("GET /users", function () {
+    it("empty", async function () {
+        const response = await request(app).get("/users")
 
         expect(response.headers["content-type"]).toMatch(/json/)
         expect(response.status).toEqual(200)
-        expect(response.body.message).toEqual("opa mundo")
+        expect(response.body).toEqual({
+			users: []
+		})
     })
+
+	it("one user", async function () {
+		getUser()
+		const response = await request(app).get("/users")
+
+        expect(response.headers["content-type"]).toMatch(/json/)
+        expect(response.status).toEqual(200)
+        expect(response.body).toEqual({
+			users: [{
+				id: 1,
+				login: "victorfarias",
+				email: "victorfarias@gmail.com",
+				password: "123456"
+			}]
+		})
+	})
 })

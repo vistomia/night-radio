@@ -1,10 +1,6 @@
 import "reflect-metadata"
 import { DataSource } from "typeorm"
-import { User } from "./entities/user.js"
-import { MenuItem } from "./entities/menuItems.js"
-import { MenuToMenuItem } from "./entities/menuToMenuItem.js"
-import { Menu } from "./entities/menu.js"
-import { Tag } from "./entities/tag.js"
+import User from "./entities/user.js"
 
 const isTest = process.env.NODE_ENV === "test"
 
@@ -14,7 +10,7 @@ export const AppDataSource = new DataSource({
     dropSchema: isTest,
     synchronize: true,
     logging: false,
-    entities: [User, MenuToMenuItem, MenuItem, Menu, Tag],
+    entities: [User],
     migrations: [],
     subscribers: [],
 })

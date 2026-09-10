@@ -1,9 +1,20 @@
 import { Router } from "express"
-import { addUser, getUsers } from "../controllers/users.controller.js"
+import {
+    deleteUserById,
+    getUserById,
+    getUsers,
+    patchUserById,
+    postUser,
+    putUserById,
+} from "../controllers/user.controller.js"
 
-const userRouter = Router()
+const menuItemRouter = Router()
 
-userRouter.get("/", getUsers)
-userRouter.get("/add", addUser)
+menuItemRouter.get("/", getUsers)
+menuItemRouter.get("/:id", getUserById)
+menuItemRouter.post("/", postUser)
+menuItemRouter.delete("/:id", deleteUserById)
+menuItemRouter.put("/:id", putUserById)
+menuItemRouter.patch("/:id", patchUserById)
 
-export default userRouter
+export default menuItemRouter
