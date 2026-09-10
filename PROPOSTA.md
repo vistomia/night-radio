@@ -1,64 +1,11 @@
-# Sistema de Cardápio Inteligente para Restaurantes
+# Sistema de Transmissão de Áudio para o envento da GameNight
 
-Também poderá gerenciar as receitas e calcular a margem de lucro de cada prato de acordo com o preço dos igredientes. O sistema deve possuir um bom sistema de busca para fazer
+Durante o acontecimento da GameNight, colocar caixas de som que toquem músicas, avisos com as programações do evento.
+
+As pessoas poderiam pedir músicas, interagir com os narradores e serem informadas. Do lado do sistema, ficaria pessoas filtrando os pedidos e outras na grade de áudios a serem tocados. Além disso, o sistema incluiria um canal direto de áudio para poder fazer locuções e avisos em tempo real.
 
 ## Membros da equipe
 
-**567680** - Victor Farias da Silva / Sistemas de informação
+**567680** - Victor Farias da Silva (@vistomia) / Sistemas de informação
 
-## Objetivo Geral
-
-Centralizar os serviços de um restaurante.
-
-- sistema de cardápio
-- sistema de receitas
-
-## Público-Alvo
-
-Grandes Restaurantes.
-
-## Impacto Esperado
-
-
-
-## Papéis ou tipos de usuário da aplicação
-
-- Usuário não logado e todos os usuários
-- Administrador - tem todos os privilegios
-- Moderador - tem privilegios de organização e disponibilidade
-- Cozinheiro
-- Cozinheiro2
-- Designer - tem privilegios de organização e estilos
-
-## Principais funcionalidades da aplicação
-
-### Usuário não logado e todos os usuários
-
-- ver itens do cardápio
-
-### Moderator
-
-
-### Administrador
-
-- criar itens do cardápio
-- atualizar itens do cardápio
-- remover itens do cardápio
-
-- Imprimir cardápio
-- Exportar cardápio
-
-## Entidades ou tabelas do sistema
-
-Liste as principais entidades do sistema.
-
-Usuário`User` com uma coluna de tipo para atribuir papéis
-Cardápio`Menu`
-Item do Cardápio `MenuItem`
-Tabela Associativa `Menu_MenuItem` contendo o preço, posição e categoria do item
-Receita`Recipe`
-Igredientes`Igredients`
-Estilo do cardápio`MenuStyle` para o designer alterar a fonte e as cores
-Tags`Tags`
-
-![alt text](erd.png)
+**570623** - Herlei da Silva Batista (@) / Redes de computadores
