@@ -20,3 +20,10 @@ https://typeorm.io/docs/drivers/sqlite/
 https://developer.mozilla.org/en-US/docs/Learn_web_development/Extensions/Server-side/Express_Nodejs/routes
 
 https://typeorm.io/docs/getting-started
+
+# CORES
+
+#876bb2
+#febf59
+#000
+#fff
