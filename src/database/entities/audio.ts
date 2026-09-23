@@ -1,4 +1,6 @@
-import { Entity, PrimaryGeneratedColumn, Column } from "typeorm"
+import { Entity, PrimaryGeneratedColumn, Column, OneToOne } from "typeorm"
+import { OneToMany } from "typeorm"
+import AudioPlaylist from "./audio_playlist.js"
 
 @Entity()
 export default class User {
@@ -25,4 +27,19 @@ export default class User {
 
 	@Column()
 	other_details!: string
+
+	@Column()
+	message!: string
+
+	@Column()
+	status!: string
+
+	@OneToOne(() => User)
+    user_validator!: User
+
+	@OneToOne(() => User)
+	user_requester!: User
+
+	@OneToMany(() => AudioPlaylist, (audioPlaylist) => audioPlaylist.audio)
+	audioPlaylists!: AudioPlaylist[]
 }
