@@ -41,19 +41,13 @@ export async function putUserById(req: any, res: any) {
 
         if (user === null) return res.status(404).send({ message: "User not found" })
 
-        userService.update(user, {
-            login: req.body.login,
-            password: req.body.password,
-            email: req.body.email
-        })
-
-        userRepo.merge(user, {
-            login: req.body.login,
-            password: req.body.password,
-            email: req.body.email
-        })
-
-        const updatedUser = await userRepo.save(user)
+        const newUser = new User()
+        
+        newUser.login = req.body.login
+        newUser.password = req.body.password
+        newUser.email =  req.body.email
+        
+        const updatedUser = await userService.patch(user, newUser)
 
         return res.json(updatedUser)
     } catch (e) {
@@ -64,14 +58,11 @@ export async function putUserById(req: any, res: any) {
 
 export async function patchUserById(req: any, res: any) {
     try {
-        const userRepo = AppDataSource.getRepository(User)
-        const user = await userRepo.findOne( { where: { id: req.params.id }})
+        const user = await userService.getById(req.params.id)
 
         if (user === null) return res.status(404).send({ message: "User not found" })
 
-        userRepo.merge(user, req.body)
-
-        const updatedUser = await userRepo.save(user)
+        const updatedUser = await userService.patch(user, req.body)
 
         return res.json(updatedUser)
     } catch (e) {
