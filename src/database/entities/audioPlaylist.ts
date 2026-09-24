@@ -10,8 +10,8 @@
         position!: number
 
         @ManyToOne("Playlist", (playlist: Playlist) => playlist.audioPlaylists)
-        playlist: Playlist
+        playlist!: Playlist
 
         @ManyToOne("Audio", (audio: Audio) => audio.audioPlaylists)
-        audio: AudioPlaylist
+        audio!: Audio
     }

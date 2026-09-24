@@ -36,4 +36,15 @@ export default class PlayoutQueueService {
         const playoutQueue_db = await this.repository.save(playoutQueue)
         return playoutQueue_db
     }
+
+    async getCurrent() {
+        return this.repository.findOne({ where: { status: "current" } })
+    }
+
+    async getNext() {
+        return this.repository.findOne({
+            where: { status: "not played" },
+            order: { position: "ASC" },
+        })
+    }
 }

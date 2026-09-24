@@ -3,6 +3,7 @@ import {
 	deletePlaylistById,
 	getPlaylistById,
 	getPlaylists,
+	linkAudioToPlaylist,
 	patchPlaylistById,
 	postPlaylist,
 	putPlaylistById,
@@ -16,5 +17,7 @@ playlistRouter.post("/", postPlaylist)
 playlistRouter.delete("/:id", deletePlaylistById)
 playlistRouter.put("/:id", putPlaylistById)
 playlistRouter.patch("/:id", patchPlaylistById)
+
+playlistRouter.post("/:id/audio", linkAudioToPlaylist)
 
 export default playlistRouter

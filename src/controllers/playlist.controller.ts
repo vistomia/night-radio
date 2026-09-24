@@ -87,3 +87,24 @@ export async function deletePlaylistById(req: any, res: any) {
 		return res.status(500).json({ message: "Internal Server Error" })
 	}
 }
+
+export async function linkAudioToPlaylist(req: any, res: any) {
+	try {
+		const playlistId = parseInt(req.params.id, 10)
+		const audioId = req.body.audioId
+
+		if (isNaN(playlistId) || !audioId) {
+			return res.status(400).json({ message: "Invalid playlist ID or audio ID" })
+		}
+
+		const updatedPlaylist = await playlistService.linkAudioToPlaylist(playlistId, audioId)
+
+		return res.json(updatedPlaylist)
+	} catch (e: any) {
+		console.error(e)
+		if (e.message === "Playlist not found") {
+			return res.status(404).json({ message: e.message })
+		}
+		return res.status(500).json({ message: "Internal Server Error" })
+	}
+}

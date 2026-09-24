@@ -1,3 +1,5 @@
+import type Audio from "../database/entities/audio.js"
+import type AudioPlaylist from "../database/entities/audioPlaylist.js"
 import type Playlist from "../database/entities/playlist.js"
 import playlistRepository from "../repositories/playlist.repository.js"
 import { Repository } from "typeorm"
@@ -28,6 +30,28 @@ export default class PlaylistService {
 
 	async post(playlist: Playlist) {
 		return this.repository.save(playlist)
+	}
+
+	async linkAudioToPlaylist(playlistId: number, audioId: number) {
+		const playlist = await this.repository.findOne({
+			where: { id: playlistId },
+			relations: { audioPlaylists: true},
+		})
+
+		if (!playlist) {
+			throw new Error("Playlist not found")
+		}
+
+		const position = playlist.audioPlaylists.length + 1
+
+		playlist.audioPlaylists.push({
+			audio: { id: audioId } as Audio,
+			position: position
+		} as AudioPlaylist)
+
+		await this.repository.save(playlist)
+
+		return playlist
 	}
 
 	async patch(playlist: Playlist, newPlaylist: Playlist) {
