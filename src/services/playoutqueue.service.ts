@@ -1,5 +1,3 @@
-import playoutqueueRepository from "../repositories/playoutqueue.repository.js";
+import playoutqueueRepository from "../repositories/playoutqueue.repository.js"
 
-export default class PlayoutQueueService {
-
-}
+export default class PlayoutQueueService {}

@@ -35,23 +35,25 @@ describe("GET /users", function () {
         expect(response.headers["content-type"]).toMatch(/json/)
         expect(response.status).toEqual(200)
         expect(response.body).toEqual({
-			users: []
-		})
+            users: [],
+        })
     })
 
-	it("one user", async function () {
-		getUser()
-		const response = await request(app).get("/users")
+    it("one user", async function () {
+        getUser()
+        const response = await request(app).get("/users")
 
         expect(response.headers["content-type"]).toMatch(/json/)
         expect(response.status).toEqual(200)
         expect(response.body).toEqual({
-			users: [{
-				id: 1,
-				login: "victorfarias",
-				email: "victorfarias@gmail.com",
-				password: "123456"
-			}]
-		})
-	})
+            users: [
+                {
+                    id: 1,
+                    login: "victorfarias",
+                    email: "victorfarias@gmail.com",
+                    password: "123456",
+                },
+            ],
+        })
+    })
 })

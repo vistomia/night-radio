@@ -24,7 +24,6 @@ export async function getUserById(req: any, res: any) {
 }
 
 export async function postUser(req: any, res: any) {
-
     const user = new User()
     user.login = req.body.login
     user.password = req.body.password
@@ -42,11 +41,11 @@ export async function putUserById(req: any, res: any) {
         if (user === null) return res.status(404).send({ message: "User not found" })
 
         const newUser = new User()
-        
+
         newUser.login = req.body.login
         newUser.password = req.body.password
-        newUser.email =  req.body.email
-        
+        newUser.email = req.body.email
+
         const updatedUser = await userService.patch(user, newUser)
 
         return res.json(updatedUser)

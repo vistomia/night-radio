@@ -1,5 +1,3 @@
-import PlaylistRepository from "../repositories/audio.repository.js";
+import PlaylistRepository from "../repositories/audio.repository.js"
 
-export default class PlaylistService {
-
-}
+export default class PlaylistService {}

@@ -4,42 +4,42 @@ import AudioPlaylist from "./audio_playlist.js"
 
 @Entity()
 export default class User {
-	@PrimaryGeneratedColumn()
-	id!: number
+    @PrimaryGeneratedColumn()
+    id!: number
 
-	@Column()
-	title!: string
+    @Column()
+    title!: string
 
-	@Column()
-	path!: string
+    @Column()
+    path!: string
 
-	@Column()
-	duration_seconds!: number
+    @Column()
+    duration_seconds!: number
 
-	@Column()
-	type!: string
+    @Column()
+    type!: string
 
-	@Column()
-	from!: string
+    @Column()
+    from!: string
 
-	@Column()
-	creator!: string
+    @Column()
+    creator!: string
 
-	@Column()
-	other_details!: string
+    @Column()
+    other_details!: string
 
-	@Column()
-	message!: string
+    @Column()
+    message!: string
 
-	@Column()
-	status!: string
+    @Column()
+    status!: string
 
-	@OneToOne(() => User)
+    @OneToOne(() => User)
     user_validator!: User
 
-	@OneToOne(() => User)
-	user_requester!: User
+    @OneToOne(() => User)
+    user_requester!: User
 
-	@OneToMany(() => AudioPlaylist, (audioPlaylist) => audioPlaylist.audio)
-	audioPlaylists!: AudioPlaylist[]
+    @OneToMany(() => AudioPlaylist, (audioPlaylist) => audioPlaylist.audio)
+    audioPlaylists!: AudioPlaylist[]
 }

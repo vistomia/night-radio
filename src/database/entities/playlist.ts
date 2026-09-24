@@ -3,18 +3,18 @@ import AudioPlaylist from "./audio_playlist.js"
 
 @Entity()
 export default class Playlist {
-	@PrimaryGeneratedColumn()
-	id!: number
+    @PrimaryGeneratedColumn()
+    id!: number
 
-	@Column()
-	title!: string
+    @Column()
+    title!: string
 
-	@Column()
-	description!: string
+    @Column()
+    description!: string
 
-	@Column()
-	photo!: string
+    @Column()
+    photo!: string
 
-	@OneToMany(() => AudioPlaylist, (audioPlaylist) => audioPlaylist.playlist)
-	audioPlaylists!: AudioPlaylist[]
+    @OneToMany(() => AudioPlaylist, (audioPlaylist) => audioPlaylist.playlist)
+    audioPlaylists!: AudioPlaylist[]
 }
