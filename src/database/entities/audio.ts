@@ -1,9 +1,10 @@
 import { Entity, PrimaryGeneratedColumn, Column, OneToOne } from "typeorm"
 import { OneToMany } from "typeorm"
-import AudioPlaylist from "./audio_playlist.js"
+import AudioPlaylist from "./audioPlaylist.js"
+import User from "./user.js"
 
 @Entity()
-export default class User {
+export default class Audio {
     @PrimaryGeneratedColumn()
     id!: number
 
@@ -40,6 +41,6 @@ export default class User {
     @OneToOne(() => User)
     user_requester!: User
 
-    @OneToMany(() => AudioPlaylist, (audioPlaylist) => audioPlaylist.audio)
+    @OneToMany("AudioPlaylist", (audioPlaylist: AudioPlaylist) => audioPlaylist.audio)
     audioPlaylists!: AudioPlaylist[]
 }

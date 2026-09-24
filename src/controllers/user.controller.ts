@@ -5,7 +5,7 @@ import UserService from "../services/user.service.js"
 const userService = new UserService()
 
 export async function getUsers(req: any, res: any) {
-    const users = await userService.getUsers(req.query.limit, req.query.skip)
+    const users = await userService.getAll(req.query.limit, req.query.skip)
 
     return res.json({ users: users })
 }

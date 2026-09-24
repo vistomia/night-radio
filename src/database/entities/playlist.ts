@@ -1,5 +1,5 @@
 import { Entity, PrimaryGeneratedColumn, Column, OneToMany } from "typeorm"
-import AudioPlaylist from "./audio_playlist.js"
+import AudioPlaylist from "./audioPlaylist.js"
 
 @Entity()
 export default class Playlist {
@@ -15,6 +15,6 @@ export default class Playlist {
     @Column()
     photo!: string
 
-    @OneToMany(() => AudioPlaylist, (audioPlaylist) => audioPlaylist.playlist)
+    @OneToMany("AudioPlaylist", (audioPlaylist: AudioPlaylist) => audioPlaylist.playlist)
     audioPlaylists!: AudioPlaylist[]
 }

@@ -5,7 +5,7 @@ import { Repository } from "typeorm"
 export default class UserService {
     repository: Repository<User> = userRepository
 
-    async getUsers(limit: number, skip: number) {
+    async getAll(limit: number, skip: number) {
         const users = await this.repository.find({
             take: limit,
             skip: skip,
