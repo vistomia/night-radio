@@ -1,5 +1,3 @@
-import { Timestamp } from "typeorm/driver/mongodb/bson.typings.js"
-import { getUserById } from "../controllers/user.controller.js"
 import type User from "../database/entities/user.js"
 import userRepository from "../repositories/user.repository.js"
 import { Repository } from "typeorm"
