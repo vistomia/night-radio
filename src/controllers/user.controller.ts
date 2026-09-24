@@ -1,4 +1,3 @@
-import { AppDataSource } from "../database/data-source.js"
 import User from "../database/entities/user.js"
 import UserService from "../services/user.service.js"
 
