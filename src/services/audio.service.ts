@@ -5,7 +5,7 @@ import { Repository } from "typeorm"
 export default class AudioService {
 	repository: Repository<Audio> = audioRepository
 
-	async getAudios(limit: number, skip: number) {
+	async getAll(limit: number, skip: number) {
 		const audios = await this.repository.find({
 			take: limit,
 			skip: skip,

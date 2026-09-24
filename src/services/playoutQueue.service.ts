@@ -5,7 +5,7 @@ import { Repository } from "typeorm"
 export default class PlayoutQueueService {
     repository: Repository<PlayoutQueue> = playoutQueueRepository
 
-    async getPlayoutQueues(limit: number, skip: number) {
+    async getAll(limit: number, skip: number) {
         const playoutQueues = await this.repository.find({
             take: limit,
             skip: skip,
