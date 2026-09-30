@@ -1,5 +1,6 @@
 import PlayoutQueue from "../database/entities/playoutQueue.js"
 import PlayoutQueueService from "../services/playoutQueue.service.js"
+import { AppDataSource } from "../database/data-source.js"
 
 const playoutQueueService = new PlayoutQueueService()
 
@@ -86,4 +87,41 @@ export async function deletePlayoutQueueById(req: any, res: any) {
 		console.error(e)
 		return res.status(500).json({ message: "Internal Server Error" })
 	}
+}
+
+export async function getCurrentPlayout(req: any, res: any) {
+    try {
+        const queueRepo = AppDataSource.getRepository(PlayoutQueue)
+        
+        const current = await queueRepo.findOne({
+            where: { status: "playing" }
+        })
+
+        if (!current) return res.status(404).json({ message: "Nenhum áudio a tocar no momento" })
+
+        return res.json(current)
+    } catch (e) {
+        console.error(e)
+        return res.status(500).json({ message: "Internal Server Error" })
+    }
+}
+
+export async function postRecorder(req: any, res: any) {
+    try {
+        const queueRepo = AppDataSource.getRepository(PlayoutQueue)
+        
+        // Simula a entrada de um aviso urgente
+        const gravacao = queueRepo.create({
+            position: "0",
+            status: "playing",
+            duration_seconds: req.body.duration_seconds || 30
+        })
+
+        const avisoSalvo = await queueRepo.save(gravacao)
+        
+        return res.status(201).json(avisoSalvo)
+    } catch (e) {
+        console.error(e)
+        return res.status(500).json({ message: "Internal Server Error" })
+    }
 }
