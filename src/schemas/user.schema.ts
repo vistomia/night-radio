@@ -11,6 +11,8 @@ export const userCreate = z.object({
     email: z.string(),
 })
 
+export const userCreatePartial = userCreate.partial()
+
 export const userPublic = z.object({
     id: z.number(),
     login: z.string(),
