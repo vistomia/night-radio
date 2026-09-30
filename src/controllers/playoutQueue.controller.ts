@@ -6,9 +6,9 @@ import type Audio from "../database/entities/audio.js"
 const playoutQueueService = new PlayoutQueueService()
 
 export async function getPlayoutQueues(req: any, res: any) {
-    const playoutQueues = await playoutQueueService.getAll(req.query.limit, req.query.skip)
+    const playoutQueue = await playoutQueueService.getAll(req.query.limit, req.query.skip)
 
-    return res.json({ playoutQueues: playoutQueues })
+    return res.json({ playoutQueue: playoutQueue })
 }
 
 export async function getPlayoutQueueById(req: any, res: any) {
@@ -29,7 +29,7 @@ export async function postPlayoutQueue(req: any, res: any) {
     try {
         const playoutQueue = new PlayoutQueue()
 
-        playoutQueue.audio = { id: req.body.audio_id } as Audio
+        playoutQueue.audio = { id: Number(req.body.audio_id) } as Audio
         playoutQueue.duration_seconds = req.body.duration_seconds
         playoutQueue.status = req.body.status
         playoutQueue.position = req.body.position

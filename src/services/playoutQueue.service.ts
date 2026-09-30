@@ -9,6 +9,7 @@ export default class PlayoutQueueService {
         const playoutQueues = await this.repository.find({
             take: limit,
             skip: skip,
+            relations: {"audio": true}
         })
 
         return playoutQueues
@@ -28,7 +29,8 @@ export default class PlayoutQueueService {
 
     async post(playoutQueue: PlayoutQueue) {
         const savedQueue = await this.repository.save(playoutQueue)
-        return savedQueue
+        const completedQueue = await this.repository.findOne({where: {audio: savedQueue.audio}, relations: { "audio": true }})
+        return completedQueue
     }
 
     async patch(playoutQueue: PlayoutQueue, newPlayoutQueue: PlayoutQueue) {

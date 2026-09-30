@@ -16,5 +16,6 @@ export default class PlayoutQueue {
     duration_seconds!: number
 
     @OneToOne(() => Audio)
+    @JoinColumn()
     audio!: Audio
 }
