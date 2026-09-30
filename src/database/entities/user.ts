@@ -13,7 +13,4 @@ export default class User {
 
     @Column()
     email!: string
-
-    @Column()
-    type!: string
 }
