@@ -9,6 +9,7 @@ async function getUser() {
     menuItem.login = "victorfarias"
     menuItem.password = "123456"
     menuItem.email = "victorfarias@gmail.com"
+    menuItem.type = "common"
 
     return await repo.save(menuItem)
 }
@@ -51,7 +52,7 @@ describe("GET /users", function () {
                     id: 1,
                     login: "victorfarias",
                     email: "victorfarias@gmail.com",
-                    password: "123456",
+                    type: "common"
                 },
             ],
         })

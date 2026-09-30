@@ -1,6 +1,6 @@
 import type PlayoutQueue from "../database/entities/playoutQueue.js"
 import playoutQueueRepository from "../repositories/playoutQueue.repository.js"
-import { Repository } from "typeorm"
+import { Repository, type FindOptionsRelations } from "typeorm"
 
 export default class PlayoutQueueService {
     repository: Repository<PlayoutQueue> = playoutQueueRepository
@@ -27,7 +27,8 @@ export default class PlayoutQueueService {
     }
 
     async post(playoutQueue: PlayoutQueue) {
-        return this.repository.save(playoutQueue)
+        const savedQueue = await this.repository.save(playoutQueue)
+        return savedQueue
     }
 
     async patch(playoutQueue: PlayoutQueue, newPlayoutQueue: PlayoutQueue) {

@@ -6,17 +6,20 @@ import {
     patchUserById,
     postUser,
     putUserById,
-    getUserAudios
+    getUserAudios,
 } from "../controllers/user.controller.js"
 
-const menuItemRouter = Router()
+import { validateBody } from "../middleware/validate.js"
+import { userCreate, userCreatePartial } from "../schemas/user.schema.js"
 
-menuItemRouter.get("/", getUsers)
-menuItemRouter.get("/:id", getUserById)
-menuItemRouter.post("/", postUser)
-menuItemRouter.delete("/:id", deleteUserById)
-menuItemRouter.put("/:id", putUserById)
-menuItemRouter.patch("/:id", patchUserById)
-menuItemRouter.get("/:id/audios", getUserAudios)
+const userRouter = Router()
 
-export default menuItemRouter
+userRouter.get("/", getUsers)
+userRouter.get("/:id", getUserById)
+userRouter.post("/", validateBody(userCreate), postUser)
+userRouter.delete("/:id", deleteUserById)
+userRouter.put("/:id", validateBody(userCreate), putUserById)
+userRouter.patch("/:id", validateBody(userCreatePartial), patchUserById)
+userRouter.get("/:id/audios", getUserAudios)
+
+export default userRouter
