@@ -1,5 +1,7 @@
 import User from "../database/entities/user.js"
 import UserService from "../services/user.service.js"
+import { AppDataSource } from "../database/data-source.js"
+import Audio from "../database/entities/audio.js"
 
 const userService = new UserService()
 
@@ -76,6 +78,21 @@ export async function deleteUserById(req: any, res: any) {
         if (result.affected === 0) return res.status(404).json({ message: "User not found" })
 
         return res.json({ message: "User deleted" })
+    } catch (e) {
+        console.error(e)
+        return res.status(500).json({ message: "Internal Server Error" })
+    }
+}
+
+export async function getUserAudios(req: any, res: any) {
+    try {
+        const audioRepo = AppDataSource.getRepository(Audio)
+        const audios = await audioRepo.find({
+            where: { user_requester: { id: parseInt(req.params.id) } },
+            relations: ["user_requester"]
+        })
+
+        return res.json({ audios: audios })
     } catch (e) {
         console.error(e)
         return res.status(500).json({ message: "Internal Server Error" })
