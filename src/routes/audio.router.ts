@@ -1,11 +1,11 @@
 import { Router } from "express"
 import {
-	deleteAudioById,
-	getAudioById,
-	getAudios,
-	patchAudioById,
-	postAudio,
-	putAudioById,
+    deleteAudioById,
+    getAudioById,
+    getAudios,
+    patchAudioById,
+    postAudio,
+    putAudioById,
 } from "../controllers/audio.controller.js"
 
 const audioRouter = Router()

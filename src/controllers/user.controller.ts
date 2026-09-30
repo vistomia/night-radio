@@ -29,6 +29,7 @@ export async function postUser(req: any, res: any) {
     user.login = req.body.login
     user.password = req.body.password
     user.email = req.body.email
+    user.type = "common"
 
     const userDB = await userService.post(user)
 
@@ -89,7 +90,7 @@ export async function getUserAudios(req: any, res: any) {
         const audioRepo = AppDataSource.getRepository(Audio)
         const audios = await audioRepo.find({
             where: { user_requester: { id: parseInt(req.params.id) } },
-            relations: ["user_requester"]
+            relations: {"user_requester": true},
         })
 
         return res.json({ audios: audios })

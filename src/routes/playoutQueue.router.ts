@@ -1,13 +1,13 @@
 import { Router } from "express"
 import {
-	deletePlayoutQueueById,
-	getPlayoutQueueById,
-	getPlayoutQueues,
-	patchPlayoutQueueById,
-	postPlayoutQueue,
-	putPlayoutQueueById,
-	getCurrentPlayout,
-    postRecorder
+    deletePlayoutQueueById,
+    getPlayoutQueueById,
+    getPlayoutQueues,
+    patchPlayoutQueueById,
+    postPlayoutQueue,
+    putPlayoutQueueById,
+    getCurrentPlayout,
+    postRecorder,
 } from "../controllers/playoutQueue.controller.js"
 
 const playoutQueueRouter = Router()

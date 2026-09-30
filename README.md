@@ -28,13 +28,13 @@ Usuário frequente, vai acessar para gerenciar a transmissão e os áudio.
 
 # Funcionalidades
 
-- 
-- 
-- 
-- 
-- 
-- 
-- 
+-
+-
+-
+-
+-
+-
+-
 
 # Diagrama de Entidades
 
@@ -59,7 +59,6 @@ https://typeorm.io/docs/getting-started
 #febf59
 #000
 #fff
-
 
 - camadas separadas
 

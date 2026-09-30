@@ -6,7 +6,7 @@ import {
     patchUserById,
     postUser,
     putUserById,
-    getUserAudios
+    getUserAudios,
 } from "../controllers/user.controller.js"
 
 const menuItemRouter = Router()
