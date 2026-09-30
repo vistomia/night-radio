@@ -2,13 +2,15 @@ import User from "../database/entities/user.js"
 import UserService from "../services/user.service.js"
 import { AppDataSource } from "../database/data-source.js"
 import Audio from "../database/entities/audio.js"
+import { userPublic } from "../schemas/user.schema.js"
 
 const userService = new UserService()
 
 export async function getUsers(req: any, res: any) {
     const users = await userService.getAll(req.query.limit, req.query.skip)
 
-    return res.json({ users: users })
+    const usersPublic = users.map(x => userPublic.parse(x))
+    return res.json({ users: usersPublic })
 }
 
 export async function getUserById(req: any, res: any) {

@@ -17,4 +17,5 @@ export const userPublic = z.object({
     id: z.number(),
     login: z.string(),
     email: z.string(),
+	type: z.string()
 })
