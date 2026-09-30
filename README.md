@@ -1,14 +1,46 @@
-# Feito
+# Sistema de Transmissão de Áudio para o envento da GameNight
 
-Testes, Linter, Formatar, Build, Watch
+Durante o acontecimento da GameNight, colocar caixas de som que toquem músicas, avisos com as programações do evento.
 
-# Para ser feito
+As pessoas poderiam pedir músicas, interagir com os narradores e serem informadas. Do lado do sistema, ficaria pessoas filtrando os pedidos e outras na grade de áudios a serem tocados. Além disso, o sistema incluiria um canal direto de áudio para poder fazer locuções e avisos em tempo real.
 
-TypeORM
-SQLite
-JWT
-ORM
-Camadas (service, controllers, routes, stores)
+## Membros da equipe
+
+**567680** - Victor Farias da Silva (@vistomia) / Sistemas de informação
+
+**570623** - Herlei da Silva Batista (@) / Redes de computadores
+
+# Solução
+
+Sistema de transmissão e gerenciamento de áudio.
+
+Sistema de validação de pedidos de áudio.
+
+# Público Alvo
+
+Universitários da Universidade Federal do Ceará do Campus Quixadá.
+
+Usuário ocasional, vai acessar para fazer apenas um pedido de música.
+
+Uusário regular, vai acessar para aceitar os pedidos de música.
+
+Usuário frequente, vai acessar para gerenciar a transmissão e os áudio.
+
+# Funcionalidades
+
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+
+# Diagrama de Entidades
+
+[Definir...]
+
+![](./erd.png)
 
 # links
 
