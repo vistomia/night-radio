@@ -1,5 +1,4 @@
-import { Entity, PrimaryGeneratedColumn, Column, OneToMany, OneToOne, JoinColumn } from "typeorm"
-import Audio from "./audio.js"
+import { Entity, PrimaryGeneratedColumn, Column } from "typeorm"
 
 @Entity()
 export default class PlayoutQueue {
@@ -14,7 +13,4 @@ export default class PlayoutQueue {
 
     @Column()
     duration_seconds!: number
-
-    @OneToOne(() => Audio)
-    audio!: Audio
 }

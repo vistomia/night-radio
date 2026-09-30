@@ -21,7 +21,7 @@ export default class Audio {
     type!: string
 
     @Column()
-    from_url!: string
+    from!: string
 
     @Column()
     creator!: string

@@ -1,12 +1,12 @@
 import { Router } from "express"
 import {
-    deletePlaylistById,
-    getPlaylistById,
-    getPlaylists,
-    linkAudioToPlaylist,
-    patchPlaylistById,
-    postPlaylist,
-    putPlaylistById,
+	deletePlaylistById,
+	getPlaylistById,
+	getPlaylists,
+	linkAudioToPlaylist,
+	patchPlaylistById,
+	postPlaylist,
+	putPlaylistById,
 } from "../controllers/playlist.controller.js"
 
 const playlistRouter = Router()
