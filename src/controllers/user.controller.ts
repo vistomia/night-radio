@@ -19,7 +19,7 @@ export async function getUserById(req: any, res: any) {
 
         if (user === null) return res.status(404).json({ message: "User not found" })
 
-        return res.json(user)
+        return res.json(userPublic.parse(user))
     } catch (e) {
         console.log(e)
         return res.status(500).json("Internal Server Error")
@@ -35,7 +35,9 @@ export async function postUser(req: any, res: any) {
 
     const userDB = await userService.post(user)
 
-    return res.status(201).json(userDB)
+    return res.status(201).json(
+        userPublic.parse(userDB)
+    )
 }
 
 export async function putUserById(req: any, res: any) {
@@ -52,7 +54,9 @@ export async function putUserById(req: any, res: any) {
 
         const updatedUser = await userService.patch(user, newUser)
 
-        return res.json(updatedUser)
+        return res.json(
+            userPublic.parse(updatedUser)
+        )
     } catch (e) {
         console.error(e)
         return res.status(500).json({ message: "Internal Server Error" })
@@ -67,7 +71,9 @@ export async function patchUserById(req: any, res: any) {
 
         const updatedUser = await userService.patch(user, req.body)
 
-        return res.json(updatedUser)
+        return res.json(
+            userPublic.parse(updatedUser)
+        )
     } catch (e) {
         console.error(e)
         return res.status(500).json({ message: "Internal Server Error" })
