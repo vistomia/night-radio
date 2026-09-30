@@ -1,6 +1,7 @@
 import PlayoutQueue from "../database/entities/playoutQueue.js"
 import PlayoutQueueService from "../services/playoutQueue.service.js"
 import { AppDataSource } from "../database/data-source.js"
+import type Audio from "../database/entities/audio.js"
 
 const playoutQueueService = new PlayoutQueueService()
 
@@ -28,6 +29,7 @@ export async function postPlayoutQueue(req: any, res: any) {
     try {
         const playoutQueue = new PlayoutQueue()
 
+        playoutQueue.audio = { id: req.body.audio_id } as Audio
         playoutQueue.duration_seconds = req.body.duration_seconds
         playoutQueue.status = req.body.status
         playoutQueue.position = req.body.position
