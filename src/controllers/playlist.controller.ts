@@ -5,7 +5,7 @@ const playlistService = new PlaylistService()
 
 export async function getPlaylists(req: any, res: any) {
     const playlists = await playlistService.getAll(req.query.limit, req.query.skip)
-
+    
     return res.json({ playlists: playlists })
 }
 
@@ -92,7 +92,7 @@ export async function linkAudioToPlaylist(req: any, res: any) {
     try {
         const playlistId = parseInt(req.params.id)
         const audioId = req.body.audioId
-
+        
         if (isNaN(playlistId) || !audioId) {
             return res.status(400).json({ message: "Invalid playlist ID or audio ID" })
         }
