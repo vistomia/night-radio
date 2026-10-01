@@ -30,9 +30,9 @@ export async function postPlayoutQueue(req: any, res: any) {
         const playoutQueue = new PlayoutQueue()
 
         playoutQueue.audio = { id: Number(req.body.audio_id) } as Audio
-        playoutQueue.duration_seconds = req.body.duration_seconds
+        playoutQueue.duration_seconds = Number(req.body.duration_seconds)
         playoutQueue.status = req.body.status
-        playoutQueue.position = req.body.position
+        playoutQueue.position = Number(req.body.position)
 
         const playoutQueueDB = await playoutQueueService.post(playoutQueue)
 
@@ -118,7 +118,7 @@ export async function postRecorder(req: any, res: any) {
 
         // Simula a entrada de um aviso urgente
         const gravacao = queueRepo.create({
-            position: "0",
+            position: 0,
             status: "playing",
             duration_seconds: req.body.duration_seconds || 30,
         })

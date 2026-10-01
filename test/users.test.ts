@@ -1,33 +1,10 @@
 import request from "supertest"
 import app from "../src/app.js"
-import { AppDataSource } from "../src/database/data-source.js"
-import User from "../src/database/entities/user.js"
+import { getUser, initializeDatabase, resetDatabase } from "./fixtures.js"
 
-async function getUser() {
-    const repo = AppDataSource.getRepository(User)
-    const menuItem = new User()
-    menuItem.login = "victorfarias"
-    menuItem.password = "123456"
-    menuItem.email = "victorfarias@gmail.com"
-    menuItem.type = "common"
+beforeAll(initializeDatabase)
 
-    return await repo.save(menuItem)
-}
-
-beforeAll(() => {
-    AppDataSource.initialize()
-})
-
-afterEach(async () => {
-    const entities = AppDataSource.entityMetadatas
-
-    for (const entity of entities) {
-        const repository = AppDataSource.getRepository(entity.name)
-        await repository.clear()
-    }
-
-    await AppDataSource.query(`DELETE FROM sqlite_sequence;`) // para limpar os IDs do banco sqlite
-})
+afterEach(resetDatabase)
 
 describe("GET /users", function () {
     it("empty", async function () {
@@ -41,7 +18,7 @@ describe("GET /users", function () {
     })
 
     it("one user", async function () {
-        getUser()
+        await getUser()
         const response = await request(app).get("/users")
 
         expect(response.headers["content-type"]).toMatch(/json/)
