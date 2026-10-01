@@ -29,7 +29,7 @@ describe("GET /users", function () {
                     id: 1,
                     login: "victorfarias",
                     email: "victorfarias@gmail.com",
-                    type: "common"
+                    type: "common",
                 },
             ],
         })

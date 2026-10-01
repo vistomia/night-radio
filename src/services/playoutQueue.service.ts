@@ -11,7 +11,7 @@ export default class PlayoutQueueService {
         const playoutQueues = await this.repository.find({
             take: limit,
             skip: skip,
-            relations: {"audio": true}
+            relations: { audio: true },
         })
 
         return playoutQueues
@@ -37,11 +37,14 @@ export default class PlayoutQueueService {
         if (audio.status != "active") {
             throw new Error("Audio not active")
         }
-        
+
         playoutQueue.audio = audio
         const savedQueue = await this.repository.save(playoutQueue)
 
-        const completedQueue = await this.repository.findOne({where: {audio: savedQueue.audio}, relations: { "audio": true }})
+        const completedQueue = await this.repository.findOne({
+            where: { audio: savedQueue.audio },
+            relations: { audio: true },
+        })
         return completedQueue
     }
 

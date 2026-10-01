@@ -17,9 +17,9 @@ export const userPublic = z.object({
     id: z.number(),
     login: z.string(),
     email: z.string(),
-	type: z.string()
+    type: z.string(),
 })
 
 export const usersPublic = z.object({
-    users: z.array(userPublic)
+    users: z.array(userPublic),
 })

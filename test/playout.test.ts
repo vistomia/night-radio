@@ -19,63 +19,61 @@ describe("GET /playoutQueue", function () {
 })
 
 describe("POST /playoutQueue", function () {
-	it("Queue Audio", async function () {
-		const audio = await getAudio() 
-        const response = await request(app).post("/playoutQueue").send(
-			{
-				audio_id: audio.id,
-				position: 1,
-				duration_seconds: 20,
-			}
-		)
-
-        expect(response.headers["content-type"]).toMatch(/json/)
-		console.log(response.body)
-        expect(response.status).toEqual(201)
-        expect(response.body).toEqual({
-			"audio": {
-    		  "creator": "Carlos",
-    		  "duration_seconds": 120,
-    		  "from_url": "http://example.com/audio.mp3",
-    		  "id": 1,
-    		  "message": "Sample message",
-    		  "other_details": "Sample details",
-    		  "path": "/path/to/audio.mp3",
-    		  "status": "active",
-    		  "title": "Sample Audio",
-    		  "type": "mp3",
-    		},
-    		"duration_seconds": 20,
-    		"id": 1,
-    		"position": 1,
-    		"status": "not_played",
+    it("Queue Audio", async function () {
+        const audio = await getAudio()
+        const response = await request(app).post("/playoutQueue").send({
+            audio_id: audio.id,
+            position: 1,
+            duration_seconds: 20,
         })
 
-		const response2 = await request(app).get("/playoutQueue")
-		
-		expect(response2.headers["content-type"]).toMatch(/json/)
+        expect(response.headers["content-type"]).toMatch(/json/)
+        console.log(response.body)
+        expect(response.status).toEqual(201)
+        expect(response.body).toEqual({
+            audio: {
+                creator: "Carlos",
+                duration_seconds: 120,
+                from_url: "http://example.com/audio.mp3",
+                id: 1,
+                message: "Sample message",
+                other_details: "Sample details",
+                path: "/path/to/audio.mp3",
+                status: "active",
+                title: "Sample Audio",
+                type: "mp3",
+            },
+            duration_seconds: 20,
+            id: 1,
+            position: 1,
+            status: "not_played",
+        })
+
+        const response2 = await request(app).get("/playoutQueue")
+
+        expect(response2.headers["content-type"]).toMatch(/json/)
         expect(response2.status).toEqual(200)
-		expect(response2.body).toEqual({
-			playoutQueue: [
-				{
-					audio: {
-						creator: "Carlos",
-						duration_seconds: 120,
-						from_url: "http://example.com/audio.mp3",
-						id: 1,
-						message: "Sample message",
-						other_details: "Sample details",
-						path: "/path/to/audio.mp3",
-						status: "active",
-						title: "Sample Audio",
-						type: "mp3",
-					},
-					duration_seconds: 20,
-					id: 1,
-					position: 1,
-					status: "not_played",
-				},
-			],
-		})
-	})
+        expect(response2.body).toEqual({
+            playoutQueue: [
+                {
+                    audio: {
+                        creator: "Carlos",
+                        duration_seconds: 120,
+                        from_url: "http://example.com/audio.mp3",
+                        id: 1,
+                        message: "Sample message",
+                        other_details: "Sample details",
+                        path: "/path/to/audio.mp3",
+                        status: "active",
+                        title: "Sample Audio",
+                        type: "mp3",
+                    },
+                    duration_seconds: 20,
+                    id: 1,
+                    position: 1,
+                    status: "not_played",
+                },
+            ],
+        })
+    })
 })

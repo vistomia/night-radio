@@ -9,7 +9,7 @@ const userService = new UserService()
 export async function getUsers(req: any, res: any) {
     const users = await userService.getAll(req.query.limit, req.query.skip)
 
-    const usersPublic = users.map(x => userPublic.parse(x))
+    const usersPublic = users.map((x) => userPublic.parse(x))
     return res.json({ users: usersPublic })
 }
 
@@ -35,9 +35,7 @@ export async function postUser(req: any, res: any) {
 
     const userDB = await userService.post(user)
 
-    return res.status(201).json(
-        userPublic.parse(userDB)
-    )
+    return res.status(201).json(userPublic.parse(userDB))
 }
 
 export async function putUserById(req: any, res: any) {
@@ -54,9 +52,7 @@ export async function putUserById(req: any, res: any) {
 
         const updatedUser = await userService.patch(user, newUser)
 
-        return res.json(
-            userPublic.parse(updatedUser)
-        )
+        return res.json(userPublic.parse(updatedUser))
     } catch (e) {
         console.error(e)
         return res.status(500).json({ message: "Internal Server Error" })
@@ -71,9 +67,7 @@ export async function patchUserById(req: any, res: any) {
 
         const updatedUser = await userService.patch(user, req.body)
 
-        return res.json(
-            userPublic.parse(updatedUser)
-        )
+        return res.json(userPublic.parse(updatedUser))
     } catch (e) {
         console.error(e)
         return res.status(500).json({ message: "Internal Server Error" })
@@ -98,7 +92,7 @@ export async function getUserAudios(req: any, res: any) {
         const audioRepo = AppDataSource.getRepository(Audio)
         const audios = await audioRepo.find({
             where: { user_requester: { id: parseInt(req.params.id) } },
-            relations: {"user_requester": true},
+            relations: { user_requester: true },
         })
 
         return res.json({ audios: audios })
