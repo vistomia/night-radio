@@ -25,12 +25,12 @@ describe("POST /playoutQueue", function () {
 			{
 				audio_id: audio.id,
 				position: 1,
-				status: "pending",
 				duration_seconds: 20,
 			}
 		)
 
         expect(response.headers["content-type"]).toMatch(/json/)
+		console.log(response.body)
         expect(response.status).toEqual(201)
         expect(response.body).toEqual({
 			"audio": {
@@ -48,7 +48,7 @@ describe("POST /playoutQueue", function () {
     		"duration_seconds": 20,
     		"id": 1,
     		"position": 1,
-    		"status": "pending",
+    		"status": "not_played",
         })
 
 		const response2 = await request(app).get("/playoutQueue")
@@ -73,7 +73,7 @@ describe("POST /playoutQueue", function () {
 					duration_seconds: 20,
 					id: 1,
 					position: 1,
-					status: "pending",
+					status: "not_played",
 				},
 			],
 		})

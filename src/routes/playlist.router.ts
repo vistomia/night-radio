@@ -8,15 +8,17 @@ import {
     postPlaylist,
     putPlaylistById,
 } from "../controllers/playlist.controller.js"
+import { validateBody } from "../middleware/validate.js"
+import { playlistCreate, playlistPublic, playlistUpdate } from "../schemas/playlist.schema.js"
 
 const playlistRouter = Router()
 
 playlistRouter.get("/", getPlaylists)
 playlistRouter.get("/:id", getPlaylistById)
-playlistRouter.post("/", postPlaylist)
+playlistRouter.post("/", validateBody(playlistPublic), postPlaylist)
+playlistRouter.put("/:id", validateBody(playlistCreate), putPlaylistById)
+playlistRouter.patch("/:id", validateBody(playlistUpdate), patchPlaylistById)
 playlistRouter.delete("/:id", deletePlaylistById)
-playlistRouter.put("/:id", putPlaylistById)
-playlistRouter.patch("/:id", patchPlaylistById)
 
 playlistRouter.post("/:id/audio", linkAudioToPlaylist)
 

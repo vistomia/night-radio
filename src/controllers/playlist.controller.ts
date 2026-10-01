@@ -90,7 +90,7 @@ export async function deletePlaylistById(req: any, res: any) {
 
 export async function linkAudioToPlaylist(req: any, res: any) {
     try {
-        const playlistId = parseInt(req.params.id, 10)
+        const playlistId = parseInt(req.params.id)
         const audioId = req.body.audioId
 
         if (isNaN(playlistId) || !audioId) {

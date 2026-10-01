@@ -19,3 +19,7 @@ export const userPublic = z.object({
     email: z.string(),
 	type: z.string()
 })
+
+export const usersPublic = z.object({
+    users: z.array(userPublic)
+})

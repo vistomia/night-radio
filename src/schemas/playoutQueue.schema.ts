@@ -3,7 +3,7 @@ import { audioPublic } from "./audio.schema.js"
 
 export const playoutQueueSchema = z.object({
     audio_id: z.number(),
-    position: z.string(),
+    position: z.number(),
     duration_seconds: z.number(),
 })
 

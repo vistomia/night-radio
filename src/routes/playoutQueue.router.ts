@@ -9,6 +9,9 @@ import {
     getCurrentPlayout,
     postRecorder,
 } from "../controllers/playoutQueue.controller.js"
+import { validateBody } from "../middleware/validate.js"
+import { playoutQueueCreate, playoutQueueSchema } from "../schemas/playoutQueue.schema.js"
+import { playlistUpdate } from "../schemas/playlist.schema.js"
 
 const playoutQueueRouter = Router()
 
@@ -17,9 +20,9 @@ playoutQueueRouter.post("/recorder", postRecorder)
 
 playoutQueueRouter.get("/", getPlayoutQueues)
 playoutQueueRouter.get("/:id", getPlayoutQueueById)
-playoutQueueRouter.post("/", postPlayoutQueue)
+playoutQueueRouter.post("/", validateBody(playoutQueueSchema), postPlayoutQueue)
+playoutQueueRouter.put("/:id", validateBody(playoutQueueCreate), putPlayoutQueueById)
+playoutQueueRouter.patch("/:id", validateBody(playlistUpdate), patchPlayoutQueueById)
 playoutQueueRouter.delete("/:id", deletePlayoutQueueById)
-playoutQueueRouter.put("/:id", putPlayoutQueueById)
-playoutQueueRouter.patch("/:id", patchPlayoutQueueById)
 
 export default playoutQueueRouter

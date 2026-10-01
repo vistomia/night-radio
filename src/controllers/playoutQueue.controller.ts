@@ -31,7 +31,7 @@ export async function postPlayoutQueue(req: any, res: any) {
 
         playoutQueue.audio = { id: Number(req.body.audio_id) } as Audio
         playoutQueue.duration_seconds = Number(req.body.duration_seconds)
-        playoutQueue.status = req.body.status
+        playoutQueue.status = "not_played"
         playoutQueue.position = Number(req.body.position)
 
         const playoutQueueDB = await playoutQueueService.post(playoutQueue)
