@@ -15,6 +15,6 @@ export default class Playlist {
     @Column()
     photo!: string
 
-    @OneToMany("AudioPlaylist", (audioPlaylist: AudioPlaylist) => audioPlaylist.playlist)
+    @OneToMany("AudioPlaylist", (audioPlaylist: AudioPlaylist) => audioPlaylist.playlist, { cascade: true })
     audioPlaylists!: AudioPlaylist[]
 }

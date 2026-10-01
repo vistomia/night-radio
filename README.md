@@ -26,16 +26,6 @@ Uusário regular, vai acessar para aceitar os pedidos de música.
 
 Usuário frequente, vai acessar para gerenciar a transmissão e os áudio.
 
-# Funcionalidades
-
--
--
--
--
--
--
--
-
 # Diagrama de Entidades
 
 [Definir...]

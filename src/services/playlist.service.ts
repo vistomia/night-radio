@@ -19,7 +19,9 @@ export default class PlaylistService {
     async getById(id: number) {
         const playlist = playlistRepository.findOne({
             where: { id: id },
-            relations: { audioPlaylists: true },
+            relations: { audioPlaylists: {
+                audio: true
+            } },
         })
 
         return playlist

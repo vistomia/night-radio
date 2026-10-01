@@ -1,6 +1,9 @@
 import type Audio from "../database/entities/audio.js"
 import audioRepository from "../repositories/audio.repository.js"
 import { Repository } from "typeorm"
+import YtdlpService from "./ytdlp.service.js"
+
+const ytdlp = new YtdlpService()
 
 export default class AudioService {
     repository: Repository<Audio> = audioRepository
@@ -27,6 +30,19 @@ export default class AudioService {
     }
 
     async post(audio: Audio) {
+        const data = await ytdlp.getAudioFromYoutube(audio.from_url)
+
+        audio.title = data.title;
+        audio.path = data.path;
+        audio.duration_seconds = data.duration;
+        audio.from_url = data.from_url;
+        audio.creator = data.channel;
+        audio.type = "mp3"
+        audio.other_details = JSON.stringify({
+            duration_string: data.duration_string,
+            thumbnail: data.thumbnail,
+        });
+
         return this.repository.save(audio)
     }
 

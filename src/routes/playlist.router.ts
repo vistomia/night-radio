@@ -14,12 +14,12 @@ import { playlistCreate, playlistPublic, playlistUpdate } from "../schemas/playl
 const playlistRouter = Router()
 
 playlistRouter.get("/", getPlaylists)
+playlistRouter.post("/:id/audios", linkAudioToPlaylist)
 playlistRouter.get("/:id", getPlaylistById)
-playlistRouter.post("/", validateBody(playlistPublic), postPlaylist)
+playlistRouter.post("/", validateBody(playlistCreate), postPlaylist)
 playlistRouter.put("/:id", validateBody(playlistCreate), putPlaylistById)
 playlistRouter.patch("/:id", validateBody(playlistUpdate), patchPlaylistById)
 playlistRouter.delete("/:id", deletePlaylistById)
 
-playlistRouter.post("/:id/audio", linkAudioToPlaylist)
 
 export default playlistRouter

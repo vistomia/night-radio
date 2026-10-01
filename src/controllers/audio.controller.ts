@@ -25,15 +25,9 @@ export async function getAudioById(req: any, res: any) {
 export async function postAudio(req: any, res: any) {
     try {
         const audio = new Audio()
-        audio.title = req.body.title
-        audio.path = req.body.path
-        audio.duration_seconds = req.body.duration_seconds
-        audio.type = req.body.type
-        audio.from_url = req.body.from
-        audio.creator = req.body.creator
-        audio.other_details = req.body.other_details
+        audio.from_url = req.body.from_url
         audio.message = req.body.message
-        audio.status = req.body.status
+        audio.status = "pending"
 
         const audioDB = await audioService.post(audio)
 

@@ -91,7 +91,7 @@ export async function deletePlaylistById(req: any, res: any) {
 export async function linkAudioToPlaylist(req: any, res: any) {
     try {
         const playlistId = parseInt(req.params.id)
-        const audioId = req.body.audioId
+        const audioId = req.body.audio_id
 
         if (isNaN(playlistId) || !audioId) {
             return res.status(400).json({ message: "Invalid playlist ID or audio ID" })
